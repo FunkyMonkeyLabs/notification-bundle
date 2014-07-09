@@ -1,2 +1,2 @@
 # FML/NotificationBundle
-See [http://funkymonkeylabs.github.io/notification-bundle](documentation on GitHub pages)
+See [documentation on GitHub pages](http://funkymonkeylabs.github.io/notification-bundle)
