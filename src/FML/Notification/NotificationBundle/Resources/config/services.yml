@@ -1,0 +1,25 @@
+parameters:
+    fml.notification.listener.notificationsend.class: FML\Notification\NotificationBundle\EventListener\NotificationSendListener
+    fml.notification.sender.class: FML\Notification\Sender
+    fml.notification.channel.mail.class: FML\Notification\Channel\Channel\SwiftMailerMailChannel
+    fml.notification.recipient.recipient.class: FML\Notification\Recipient\Recipient
+
+services:
+    fml.notification.recipient.recipient:
+        class: %fml.notification.recipient.recipient.class%
+
+    fml.notification.channel.mail:
+        class: %fml.notification.channel.mail.class%
+        arguments: [@mailer]
+
+    fml.notification.sender:
+        class: %fml.notification.sender.class%
+        calls:
+            - [addChannel, [@fml.notification.channel.mail]]
+            - [setContainer, [@service_container]]
+
+    fml.notification.listener.notificationsend:
+        class: %fml.notification.listener.notificationsend.class%
+        arguments: [@fml.notification.sender]
+        tags:
+            - { name: kernel.event_listener, event: kernel.terminate, method: onTerminate }
