@@ -1,0 +1,26 @@
+{
+  "name": "fml/notification-bundle",
+  "description": "Library which help you to send notification via different channels wrapped to Symfony2 bundle",
+  "keywords": ["notification-bundle", "notification", "mail", "sms", "abdulklarapl", "funkymonkeylabs", "funky", "monkey"],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Patryk Szlagowski",
+      "email": "szlagowskipatryk@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "fml/notification": "v5.2.0",
+    "swiftmailer/swiftmailer": "v5.2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "FML\\Notification\\NotificationBundle": "src/"
+    }
+  }
+}
