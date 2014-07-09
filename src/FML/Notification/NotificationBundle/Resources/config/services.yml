@@ -2,12 +2,8 @@ parameters:
     fml.notification.listener.notificationsend.class: FML\Notification\NotificationBundle\EventListener\NotificationSendListener
     fml.notification.sender.class: FML\Notification\Sender
     fml.notification.channel.mail.class: FML\Notification\Channel\Channel\SwiftMailerMailChannel
-    fml.notification.recipient.recipient.class: FML\Notification\Recipient\Recipient
 
 services:
-    fml.notification.recipient.recipient:
-        class: %fml.notification.recipient.recipient.class%
-
     fml.notification.channel.mail:
         class: %fml.notification.channel.mail.class%
         arguments: [@mailer]
