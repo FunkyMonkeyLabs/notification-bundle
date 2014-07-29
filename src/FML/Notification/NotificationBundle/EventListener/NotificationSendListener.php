@@ -2,7 +2,7 @@
 
 namespace FML\Notification\NotificationBundle\EventListener;
 
-use FML\Notification\NotificationBundle\Notification\Sender;
+use FML\Notification\Sender;
 use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 
 /**
