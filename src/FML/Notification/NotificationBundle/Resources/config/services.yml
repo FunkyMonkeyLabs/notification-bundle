@@ -12,7 +12,6 @@ services:
         class: %fml.notification.sender.class%
         calls:
             - [addChannel, [@fml.notification.channel.mail]]
-            - [setContainer, [@service_container]]
 
     fml.notification.listener.notificationsend:
         class: %fml.notification.listener.notificationsend.class%
