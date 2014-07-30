@@ -1,6 +1,6 @@
 parameters:
     fml.notification.listener.notificationsend.class: FML\Notification\NotificationBundle\EventListener\NotificationSendListener
-    fml.notification.sender.class: FML\Notification\Sender
+    fml.notification.manager.class: FML\Notification\MessageManager
     fml.notification.channel.mail.class: FML\Notification\Channel\Channel\SwiftMailerMailChannel
 
 services:
@@ -8,13 +8,13 @@ services:
         class: %fml.notification.channel.mail.class%
         arguments: [@mailer]
 
-    fml.notification.sender:
-        class: %fml.notification.sender.class%
+    fml.notification.manager:
+        class: %fml.notification.manager.class%
         calls:
             - [addChannel, [@fml.notification.channel.mail]]
 
     fml.notification.listener.notificationsend:
         class: %fml.notification.listener.notificationsend.class%
-        arguments: [@fml.notification.sender]
+        arguments: [@fml.notification.manager]
         tags:
             - { name: kernel.event_listener, event: kernel.terminate, method: onTerminate }
