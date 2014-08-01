@@ -2,7 +2,7 @@
 
 namespace FML\Notification\NotificationBundle\EventListener;
 
-use FML\Notification\MessageManager;
+use FML\Notification\BufferedMessageManager;
 use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 
 /**
@@ -11,14 +11,14 @@ use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 class NotificationSendListener {
 
     /**
-     * @var MessageManager
+     * @var BufferedMessageManager
      */
     private $manager;
 
     /**
      * @param Sender $sender
      */
-    public function __construct(MessageManager $manager)
+    public function __construct(BufferedMessageManager $manager)
     {
         $this->manager = $manager;
     }
