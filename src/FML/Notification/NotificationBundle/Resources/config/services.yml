@@ -6,21 +6,21 @@ parameters:
 
 services:
     fml.notification.channel.mail:
-        class: %fml.notification.channel.mail.class%
-        arguments: [@mailer]
+        class: '%fml.notification.channel.mail.class%'
+        arguments: ['@mailer']
 
     fml.notification.manager:
-        class: %fml.notification.manager.class%
+        class: '%fml.notification.manager.class%'
         calls:
-            - [addChannel, [@fml.notification.channel.mail]]
+            - [addChannel, ['@fml.notification.channel.mail']]
 
     fml.notification.manager.buffered:
-        class: %fml.notification.manager.buffered.class%
+        class: '%fml.notification.manager.buffered.class%'
         calls:
-            - [addChannel, [@fml.notification.channel.mail]]
+            - [addChannel, ['@fml.notification.channel.mail']]
 
     fml.notification.listener.notificationsend:
-        class: %fml.notification.listener.notificationsend.class%
-        arguments: [@fml.notification.manager.buffered]
+        class: '%fml.notification.listener.notificationsend.class%'
+        arguments: ['@fml.notification.manager.buffered']
         tags:
             - { name: kernel.event_listener, event: kernel.terminate, method: onTerminate }
